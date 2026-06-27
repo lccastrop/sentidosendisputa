@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publicaciones — Sentidos en Disputa</title>
+  <meta name="description" content="Artículos, ensayos y notas de análisis de Sentidos en Disputa (SED) sobre cultura política en América Latina." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* Los títulos de artículo heredan el color del h3, no el color global de links */
+    .post-body h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .post-body h3 a:hover {
+      color: var(--rojo);
+    }
+
+    /* Estado de carga */
+    .pub-status {
+      padding: 32px 0;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--gris-ceniza);
+      letter-spacing: 0.04em;
+    }
+
+    /* Estado de error */
+    .pub-error {
+      padding: 28px;
+      border: 1px solid rgba(181,21,31,0.3);
+      border-left: 3px solid var(--rojo);
+      background: rgba(181,21,31,0.04);
+    }
+
+    .pub-error p {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--negro);
+      max-width: none;
+    }
+
+    .pub-error a {
+      color: var(--rojo);
+    }
+
+    /* Enlace de suscripción */
+    .substack-cta {
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(26,23,20,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .substack-cta p {
+      font-size: 0.92rem;
+      color: var(--gris-ceniza);
+      max-width: 50ch;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <svg class="nav-logo-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><path id="nf" d="M20,150 L20,52 C24,30 44,14 62,16 L88,30 L94,40 L80,50 L90,64 L120,76 L94,84 L104,94 L88,100 L104,112 L72,124 L56,144 Z"/></defs>
+          <use href="#nf" fill="#1A1714"/>
+          <use href="#nf" fill="#B5151F" transform="translate(200,0) scale(-1,1)"/>
+          <rect x="0" y="78" width="200" height="6" fill="#EFE7D8"/>
+          <rect x="0" y="118" width="200" height="6" fill="#EFE7D8"/>
+        </svg>
+        Sentidos <span>en Disputa</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="publicaciones.html">Publicaciones</a></li>
+        <li><a href="formacion.html">Formación</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <div class="container">
+        <span class="section-label">Escritura e investigación</span>
+        <h1>Publicaciones</h1>
+        <p>
+          Artículos académicos, ensayos y notas de análisis sobre cultura política, hegemonía
+          y resistencia popular en América Latina. Los contenidos de SED también se publican
+          en Substack.
+        </p>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+
+        <!-- Estado de carga -->
+        <div id="pub-loading" class="pub-status" aria-live="polite">
+          Cargando publicaciones…
+        </div>
+
+        <!-- Estado de error (oculto hasta que falle el fetch) -->
+        <div id="pub-error" class="pub-error" hidden aria-live="assertive">
+          <p>
+            No se pudieron cargar las publicaciones en este momento.
+            Puedes leerlas directamente en
+            <a href="https://sentidosendisputa.substack.com" target="_blank" rel="noopener">
+              sentidosendisputa.substack.com
+            </a>.
+          </p>
+        </div>
+
+        <!-- Lista de artículos — poblada por JS -->
+        <div id="pub-list" class="post-list" role="feed" aria-label="Publicaciones de SED"></div>
+
+        <!-- Fallback sin JS -->
+        <noscript>
+          <p style="padding: 24px 0; color: var(--gris-ceniza); font-family: var(--font-body);">
+            Para ver las publicaciones activa JavaScript, o visita directamente
+            <a href="https://sentidosendisputa.substack.com">sentidosendisputa.substack.com</a>.
+          </p>
+        </noscript>
+
+        <!-- CTA Substack -->
+        <div class="substack-cta">
+          <p>Recibe cada nueva publicación directamente en tu correo.</p>
+          <a
+            href="https://sentidosendisputa.substack.com"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            Suscribirse en Substack →
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Sentidos <span>en Disputa</span></span>
+        <ul class="footer-links">
+          <li><a href="publicaciones.html">Publicaciones</a></li>
+          <li><a href="formacion.html">Formación</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        <p class="footer-copy">&copy; 2026 Sentidos en Disputa</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      var listEl    = document.getElementById('pub-list');
+      var loadingEl = document.getElementById('pub-loading');
+      var errorEl   = document.getElementById('pub-error');
+
+      function formatDate(str) {
+        if (!str) return '';
+        var d = new Date(str);
+        if (isNaN(d)) return '';
+        return d.toLocaleDateString('es-ES', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+      }
+
+      function stripHtml(html) {
+        var div = document.createElement('div');
+        div.innerHTML = html;
+        return (div.textContent || div.innerText || '').replace(/\s+/g, ' ').trim();
+      }
+
+      function excerpt(text, max) {
+        if (text.length <= max) return text;
+        // Cortar en el último espacio antes del límite
+        return text.slice(0, max).replace(/\s\S*$/, '') + '…';
+      }
+
+      function escapeHtml(s) {
+        return s
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function renderItems(items) {
+        if (items.length === 0) {
+          listEl.innerHTML =
+            '<p class="pub-status">No hay publicaciones disponibles aún.</p>';
+          return;
+        }
+
+        var html = '';
+        for (var i = 0; i < items.length; i++) {
+          var item = items[i];
+
+          var title = (item.querySelector('title') || {}).textContent || 'Sin título';
+          title = title.trim();
+
+          // <link> en RSS es texto plano; usar guid como fallback
+          var linkEl = item.querySelector('link');
+          var link = linkEl ? linkEl.textContent.trim() : '';
+          if (!link) {
+            var guidEl = item.querySelector('guid');
+            link = guidEl ? guidEl.textContent.trim() : '#';
+          }
+
+          var pubDate = '';
+          var dateEl = item.querySelector('pubDate');
+          if (dateEl) pubDate = dateEl.textContent.trim();
+
+          var desc = '';
+          var descEl = item.querySelector('description');
+          if (descEl) desc = excerpt(stripHtml(descEl.textContent), 240);
+
+          html +=
+            '<article class="post-item">' +
+              '<span class="post-date">' + escapeHtml(formatDate(pubDate)) + '</span>' +
+              '<div class="post-body">' +
+                '<h3>' +
+                  '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener">' +
+                    escapeHtml(title) +
+                  '</a>' +
+                '</h3>' +
+                (desc ? '<p>' + escapeHtml(desc) + '</p>' : '') +
+              '</div>' +
+            '</article>';
+        }
+        listEl.innerHTML = html;
+      }
+
+      // Intenta el proxy primero; si falla (local sin vercel dev, proxy caído, etc.)
+      // hace fetch directo — los feeds RSS de Substack permiten CORS.
+      function fetchXml() {
+        return fetch('/api/feed')
+          .then(function (r) {
+            if (!r.ok) throw new Error('proxy-' + r.status);
+            return r.text();
+          })
+          .catch(function () {
+            return fetch('https://sentidosendisputa.substack.com/feed')
+              .then(function (r) {
+                if (!r.ok) throw new Error('direct-' + r.status);
+                return r.text();
+              });
+          });
+      }
+
+      fetchXml()
+        .then(function (xml) {
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(xml, 'application/xml');
+
+          if (doc.querySelector('parsererror')) {
+            throw new Error('XML inválido');
+          }
+
+          var items = Array.from(doc.querySelectorAll('channel > item'));
+          loadingEl.hidden = true;
+          renderItems(items);
+        })
+        .catch(function (err) {
+          console.error('[SED/publicaciones]', err);
+          loadingEl.hidden = true;
+          errorEl.hidden = false;
+        });
+    })();
+  </script>
+</body>
+</html>

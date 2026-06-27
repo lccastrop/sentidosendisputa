@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — Sentidos en Disputa</title>
+  <meta name="description" content="Ponte en contacto con Sentidos en Disputa (SED)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <svg class="nav-logo-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><path id="nf" d="M20,150 L20,52 C24,30 44,14 62,16 L88,30 L94,40 L80,50 L90,64 L120,76 L94,84 L104,94 L88,100 L104,112 L72,124 L56,144 Z"/></defs>
+          <use href="#nf" fill="#1A1714"/>
+          <use href="#nf" fill="#B5151F" transform="translate(200,0) scale(-1,1)"/>
+          <rect x="0" y="78" width="200" height="6" fill="#EFE7D8"/>
+          <rect x="0" y="118" width="200" height="6" fill="#EFE7D8"/>
+        </svg>
+        Sentidos <span>en Disputa</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="publicaciones.html">Publicaciones</a></li>
+        <li><a href="formacion.html">Formación</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <div class="container">
+        <span class="section-label">Conversemos</span>
+        <h1>Contacto</h1>
+        <p>Para colaboraciones, invitaciones, comentarios o cualquier inquietud sobre el proyecto.</p>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="contact-grid">
+
+          <div class="contact-info">
+            <h2>¿Tienes algo<br />que decir?</h2>
+            <div class="divider"></div>
+            <p>
+              Este es un proyecto independiente y la comunicación directa siempre es bienvenida.
+              Escríbeme si quieres proponer una colaboración, comentar algo que hayas leído o
+              simplemente conversar sobre los temas que aborda el proyecto.
+            </p>
+            <div class="contact-detail" style="margin-top: 32px;">
+              <a href="mailto:lccastrop@unal.edu.co">
+                <span class="contact-icon">@</span>
+                lccastrop@unal.edu.co
+              </a>
+              <a href="#" target="_blank" rel="noopener">
+                <span class="contact-icon">TW</span>
+                Twitter / X
+              </a>
+              <a href="#" target="_blank" rel="noopener">
+                <span class="contact-icon">IG</span>
+                Instagram
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
+              <!--
+                Para activar: crea una cuenta en formspree.io,
+                crea un Form y reemplaza XXXXXXXX con tu Form ID.
+              -->
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="tu@correo.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="asunto">Asunto</label>
+                <select id="asunto" name="asunto">
+                  <option value="">Selecciona un asunto</option>
+                  <option value="colaboracion">Propuesta de colaboración</option>
+                  <option value="invitacion">Invitación</option>
+                  <option value="comentario">Comentario sobre el contenido</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí…" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Sentidos <span>en Disputa</span></span>
+        <ul class="footer-links">
+          <li><a href="publicaciones.html">Publicaciones</a></li>
+          <li><a href="formacion.html">Formación</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        <p class="footer-copy">&copy; 2026 Sentidos en Disputa</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

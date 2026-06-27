@@ -212,24 +212,22 @@
         for (var i = 0; i < items.length; i++) {
           var item = items[i];
 
-          var title = (item.querySelector('title') || {}).textContent || 'Sin título';
-          title = title.trim();
+          // getElementsByTagName funciona en XML; querySelector puede fallar con namespaces
+          var titleEls = item.getElementsByTagName('title');
+          var title = titleEls.length ? titleEls[0].textContent.trim() : 'Sin título';
 
-          // <link> en RSS es texto plano; usar guid como fallback
-          var linkEl = item.querySelector('link');
-          var link = linkEl ? linkEl.textContent.trim() : '';
+          var linkEls = item.getElementsByTagName('link');
+          var link = linkEls.length ? linkEls[0].textContent.trim() : '';
           if (!link) {
-            var guidEl = item.querySelector('guid');
-            link = guidEl ? guidEl.textContent.trim() : '#';
+            var guidEls = item.getElementsByTagName('guid');
+            link = guidEls.length ? guidEls[0].textContent.trim() : '#';
           }
 
-          var pubDate = '';
-          var dateEl = item.querySelector('pubDate');
-          if (dateEl) pubDate = dateEl.textContent.trim();
+          var dateEls = item.getElementsByTagName('pubDate');
+          var pubDate = dateEls.length ? dateEls[0].textContent.trim() : '';
 
-          var desc = '';
-          var descEl = item.querySelector('description');
-          if (descEl) desc = excerpt(stripHtml(descEl.textContent), 240);
+          var descEls = item.getElementsByTagName('description');
+          var desc = descEls.length ? excerpt(stripHtml(descEls[0].textContent), 240) : '';
 
           html +=
             '<article class="post-item">' +
@@ -273,7 +271,8 @@
             throw new Error('XML inválido');
           }
 
-          var items = Array.from(doc.querySelectorAll('channel > item'));
+          // getElementsByTagName funciona en XML; querySelectorAll('channel > item') no.
+          var items = Array.from(doc.getElementsByTagName('item'));
           loadingEl.hidden = true;
           renderItems(items);
         })

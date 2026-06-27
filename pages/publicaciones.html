@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Publicaciones — Sentidos en Disputa</title>
-  <meta name="description" content="Artículos, ensayos y notas de análisis de Sentidos en Disputa (SED) sobre cultura política en América Latina." />
+  <meta name="description"
+    content="Artículos, ensayos y notas de análisis de Sentidos en Disputa (SED) sobre cultura política en América Latina." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <style>
     /* Los títulos de artículo heredan el color del h3, no el color global de links */
@@ -15,6 +19,7 @@
       color: inherit;
       text-decoration: none;
     }
+
     .post-body h3 a:hover {
       color: var(--rojo);
     }
@@ -31,9 +36,9 @@
     /* Estado de error */
     .pub-error {
       padding: 28px;
-      border: 1px solid rgba(181,21,31,0.3);
+      border: 1px solid rgba(181, 21, 31, 0.3);
       border-left: 3px solid var(--rojo);
-      background: rgba(181,21,31,0.04);
+      background: rgba(181, 21, 31, 0.04);
     }
 
     .pub-error p {
@@ -51,7 +56,7 @@
     .substack-cta {
       margin-top: 56px;
       padding-top: 40px;
-      border-top: 1px solid rgba(26,23,20,0.12);
+      border-top: 1px solid rgba(26, 23, 20, 0.12);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -66,17 +71,21 @@
     }
   </style>
 </head>
+
 <body>
 
   <nav class="site-nav">
     <div class="nav-inner">
       <a href="../index.html" class="nav-logo">
         <svg class="nav-logo-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs><path id="nf" d="M20,150 L20,52 C24,30 44,14 62,16 L88,30 L94,40 L80,50 L90,64 L120,76 L94,84 L104,94 L88,100 L104,112 L72,124 L56,144 Z"/></defs>
-          <use href="#nf" fill="#1A1714"/>
-          <use href="#nf" fill="#B5151F" transform="translate(200,0) scale(-1,1)"/>
-          <rect x="0" y="78" width="200" height="6" fill="#EFE7D8"/>
-          <rect x="0" y="118" width="200" height="6" fill="#EFE7D8"/>
+          <defs>
+            <path id="nf"
+              d="M20,150 L20,52 C24,30 44,14 62,16 L88,30 L94,40 L80,50 L90,64 L120,76 L94,84 L104,94 L88,100 L104,112 L72,124 L56,144 Z" />
+          </defs>
+          <use href="#nf" fill="#1A1714" />
+          <use href="#nf" fill="#B5151F" transform="translate(200,0) scale(-1,1)" />
+          <rect x="0" y="78" width="200" height="6" fill="#EFE7D8" />
+          <rect x="0" y="118" width="200" height="6" fill="#EFE7D8" />
         </svg>
         Sentidos <span>en Disputa</span>
       </a>
@@ -97,8 +106,8 @@
         <span class="section-label">Escritura e investigación</span>
         <h1>Publicaciones</h1>
         <p>
-          Artículos académicos, ensayos y notas de análisis sobre cultura política, hegemonía
-          y resistencia popular en América Latina. Los contenidos de SED también se publican
+          Artículos académicos, ensayos y notas de análisis sobre cultura política para América Latina. Los contenidos
+          de SED también se publican
           en Substack.
         </p>
       </div>
@@ -137,12 +146,7 @@
         <!-- CTA Substack -->
         <div class="substack-cta">
           <p>Recibe cada nueva publicación directamente en tu correo.</p>
-          <a
-            href="https://sentidosendisputa.substack.com"
-            class="btn btn-primary"
-            target="_blank"
-            rel="noopener"
-          >
+          <a href="https://sentidosendisputa.substack.com" class="btn btn-primary" target="_blank" rel="noopener">
             Suscribirse en Substack →
           </a>
         </div>
@@ -168,9 +172,9 @@
   <script src="../js/main.js"></script>
   <script>
     (function () {
-      var listEl    = document.getElementById('pub-list');
+      var listEl = document.getElementById('pub-list');
       var loadingEl = document.getElementById('pub-loading');
-      var errorEl   = document.getElementById('pub-error');
+      var errorEl = document.getElementById('pub-error');
 
       function formatDate(str) {
         if (!str) return '';
@@ -226,20 +230,27 @@
           var dateEls = item.getElementsByTagName('pubDate');
           var pubDate = dateEls.length ? dateEls[0].textContent.trim() : '';
 
-          var descEls = item.getElementsByTagName('description');
-          var desc = descEls.length ? excerpt(stripHtml(descEls[0].textContent), 240) : '';
+          // Substack pone el contenido completo en <content:encoded>;
+          // getElementsByTagName('encoded') lo encuentra por nombre local (ignora el prefijo).
+          // Si está vacío, cae en <description>.
+          var contentEls = item.getElementsByTagName('encoded');
+          var descEls    = item.getElementsByTagName('description');
+          var rawHtml = (contentEls.length && contentEls[0].textContent.trim())
+            ? contentEls[0].textContent.trim()
+            : (descEls.length ? descEls[0].textContent.trim() : '');
+          var desc = rawHtml ? excerpt(stripHtml(rawHtml), 300) : '';
 
           html +=
             '<article class="post-item">' +
-              '<span class="post-date">' + escapeHtml(formatDate(pubDate)) + '</span>' +
-              '<div class="post-body">' +
-                '<h3>' +
-                  '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener">' +
-                    escapeHtml(title) +
-                  '</a>' +
-                '</h3>' +
-                (desc ? '<p>' + escapeHtml(desc) + '</p>' : '') +
-              '</div>' +
+            '<span class="post-date">' + escapeHtml(formatDate(pubDate)) + '</span>' +
+            '<div class="post-body">' +
+            '<h3>' +
+            '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener">' +
+            escapeHtml(title) +
+            '</a>' +
+            '</h3>' +
+            (desc ? '<p>' + escapeHtml(desc) + '</p>' : '') +
+            '</div>' +
             '</article>';
         }
         listEl.innerHTML = html;
@@ -284,4 +295,5 @@
     })();
   </script>
 </body>
+
 </html>

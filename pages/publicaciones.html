@@ -230,11 +230,12 @@
           var dateEls = item.getElementsByTagName('pubDate');
           var pubDate = dateEls.length ? dateEls[0].textContent.trim() : '';
 
-          // Substack pone el contenido completo en <content:encoded>;
-          // getElementsByTagName('encoded') lo encuentra por nombre local (ignora el prefijo).
-          // Si está vacío, cae en <description>.
-          var contentEls = item.getElementsByTagName('encoded');
-          var descEls    = item.getElementsByTagName('description');
+          // <content:encoded> requiere getElementsByTagNameNS con la URI del namespace.
+          // getElementsByTagName('encoded') falla en documentos XML parseados con DOMParser.
+          var contentEls = item.getElementsByTagNameNS(
+            'http://purl.org/rss/1.0/modules/content/', 'encoded'
+          );
+          var descEls = item.getElementsByTagName('description');
           var rawHtml = (contentEls.length && contentEls[0].textContent.trim())
             ? contentEls[0].textContent.trim()
             : (descEls.length ? descEls[0].textContent.trim() : '');

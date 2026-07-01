@@ -49,35 +49,39 @@
         <div class="contact-grid">
 
           <div class="contact-info">
-            <h2>¿Tienes algo<br />que decir?</h2>
-            <div class="divider"></div>
-            <p>
-              Este es un proyecto independiente y la comunicación directa siempre es bienvenida.
-              Escríbeme si quieres proponer una colaboración, comentar algo que hayas leído o
-              simplemente conversar sobre los temas que aborda el proyecto.
-            </p>
-            <div class="contact-detail" style="margin-top: 32px;">
-              <a href="mailto:lccastrop@unal.edu.co">
-                <span class="contact-icon">@</span>
-                lccastrop@unal.edu.co
-              </a>
-              <a href="#" target="_blank" rel="noopener">
-                <span class="contact-icon">TW</span>
-                Twitter / X
-              </a>
-              <a href="#" target="_blank" rel="noopener">
-                <span class="contact-icon">IG</span>
-                Instagram
-              </a>
+            <div class="about-photo">
+              <img src="../img/foto-camilo.jpg" alt="Camilo Castro" />
+            </div>
+            <div>
+              <h2>¿Tienes algo<br />que decir?</h2>
+              <div class="divider"></div>
+              <p>
+                Este es un proyecto independiente y la comunicación directa siempre es bienvenida.
+                Escríbeme si quieres proponer una colaboración, comentar algo que hayas leído o
+                simplemente conversar sobre los temas que aborda el proyecto.
+              </p>
+              <div class="contact-detail" style="margin-top: 32px;">
+                <a href="mailto:lccastrop@unal.edu.co">
+                  <span class="contact-icon">@</span>
+                  lccastrop@unal.edu.co
+                </a>
+                <a href="#" target="_blank" rel="noopener">
+                  <span class="contact-icon">TW</span>
+                  Twitter / X
+                </a>
+                <a href="#" target="_blank" rel="noopener">
+                  <span class="contact-icon">IG</span>
+                  Instagram
+                </a>
+              </div>
             </div>
           </div>
 
           <div>
-            <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
-              <!--
-                Para activar: crea una cuenta en formspree.io,
-                crea un Form y reemplaza XXXXXXXX con tu Form ID.
-              -->
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
+              <input type="hidden" name="access_key" value="a4b5ec14-117a-408f-9978-a62aded4a7b5" />
+              <input type="hidden" name="subject" value="Nuevo mensaje desde Sentidos en Disputa" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
               <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />

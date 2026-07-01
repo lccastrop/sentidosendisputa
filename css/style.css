@@ -480,10 +480,30 @@ section { padding: 72px 0; }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
   margin-top: 56px;
   align-items: start;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.contact-info .about-photo {
+  aspect-ratio: 3/4;
+  background: rgba(26,23,20,0.06);
+  border: 1px solid rgba(26,23,20,0.15);
+  overflow: hidden;
+}
+
+.contact-info .about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .contact-info p { color: var(--gris-ceniza); margin-bottom: 28px; }
@@ -721,6 +741,7 @@ textarea { min-height: 130px; resize: vertical; }
   .about-grid { grid-template-columns: 1fr; gap: 28px; }
   .about-photo { aspect-ratio: 1/1; max-width: 260px; }
   .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .contact-info { grid-template-columns: 1fr; }
   .proyecto-body { grid-template-columns: 1fr; }
   .proyecto-sidebar { position: static; }
   .post-item { grid-template-columns: 1fr; gap: 6px; }

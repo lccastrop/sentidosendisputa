@@ -3,71 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formación — Sentidos en Disputa</title>
-  <meta name="description" content="Formación académica, trayectoria e investigación de Camilo Castro — Sentidos en Disputa." />
+  <title>Herramientas conceptuales — Sentidos en Disputa</title>
+  <meta name="description" content="Herramientas conceptuales para analizar la cultura política: estética, espectáculo e internet desde una perspectiva crítica latinoamericana." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <style>
-    .cv-section { margin-top: 64px; }
+    .course-intro { display: grid; gap: 24px; margin-bottom: 56px; }
+    .course-intro p { max-width: 72ch; }
 
-    .cv-section:first-child { margin-top: 0; }
+    .course-unit { border-top: 1px solid rgba(26,23,20,0.12); padding-top: 56px; margin-top: 56px; }
+    .course-unit:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
 
-    .cv-section h3 {
+    .unit-head { display: grid; gap: 14px; }
+    .unit-label {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--rojo);
-      margin-bottom: 28px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(26,23,20,0.15);
     }
 
-    .cv-entry {
+    .unit-title { margin: 0; font-size: clamp(1.5rem, 2.5vw, 2rem); }
+
+    .unit-meta { display: grid; gap: 24px; }
+    .unit-meta p { max-width: 68ch; }
+
+    .unit-content h3,
+    .unit-bibliography h3 { margin-bottom: 18px; font-size: 1rem; }
+    .unit-content ul,
+    .bib-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .unit-content li,
+    .bib-list li { padding-left: 1.2rem; position: relative; color: var(--negro); line-height: 1.7; }
+    .unit-content li::before,
+    .bib-list li::before { content: "—"; position: absolute; left: 0; color: var(--rojo); }
+
+    .unit-bibliography {
+      background: rgba(181,21,31,0.06);
+      border-left: 4px solid var(--rojo);
+      padding: 26px 24px;
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 24px;
-      padding: 20px 0;
-      border-bottom: 1px dashed rgba(26,23,20,0.1);
-      align-items: start;
+      gap: 18px;
     }
+    .unit-bibliography p { margin: 0; font-weight: 600; }
+    .unit-bibliography .bib-list li { padding-left: 1.35rem; }
 
-    .cv-entry:last-child { border-bottom: none; }
-
-    .cv-year {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--gris-ceniza);
-      padding-top: 3px;
-      line-height: 1.6;
-    }
-
-    .cv-body h4 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .cv-body .cv-institution {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--gris-ceniza);
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .cv-body p {
-      font-size: 0.9rem;
-      color: var(--gris-ceniza);
-      max-width: none;
-    }
-
-    @media (max-width: 600px) {
-      .cv-entry { grid-template-columns: 1fr; gap: 4px; }
+    @media (max-width: 760px) {
+      .course-intro { gap: 20px; }
+      .course-unit { padding-top: 40px; margin-top: 40px; }
     }
   </style>
 </head>
@@ -99,146 +84,113 @@
   <main>
     <header class="page-header">
       <div class="container">
-        <span class="section-label">Currículum</span>
-        <h1>Formación</h1>
-        <p>Trayectoria académica, experiencia docente e investigativa.</p>
+        <span class="section-label">Formación</span>
+        <h1>Herramientas conceptuales</h1>
+        <p>Textos académicos y políticos para pensar, analizar y reflexionar la cultura política desde una perspectiva crítica e insurgente.</p>
       </div>
     </header>
 
     <section>
       <div class="container">
-
-        <!-- BIO BREVE -->
-        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 56px; align-items: start; margin-bottom: 72px;">
-          <div class="about-photo" style="aspect-ratio: 3/4; max-width: 100%;">
-            <!-- Reemplaza con: <img src="../img/foto.jpg" alt="Camilo Castro" /> -->
-            <span style="text-align:center; padding:24px; line-height:2;">Foto<br/>del<br/>autor</span>
-          </div>
-          <div>
-            <span class="section-label">Camilo Castro</span>
-            <h2 style="margin-bottom:16px;">Investigador<br />y docente.</h2>
-            <div class="divider"></div>
-            <p>
-              [Descripción breve: formación, área de trabajo, institución o adscripción.
-              Mi trabajo se mueve en la intersección entre los estudios culturales, la comunicación
-              y las ciencias sociales.]
-            </p>
-            <p style="margin-top:14px;">
-              [Agrega aquí una segunda oración sobre tu trayectoria o el enfoque de tu investigación.]
-            </p>
-            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:28px;">
-              <a href="#" class="btn btn-outline" target="_blank" rel="noopener">Academia.edu</a>
-              <a href="#" class="btn btn-outline" target="_blank" rel="noopener">ResearchGate</a>
-              <a href="#" class="btn btn-outline" target="_blank" rel="noopener">ORCID</a>
-            </div>
-          </div>
+        <div class="course-intro">
+          <p>
+            Sentidos en Disputa es un espacio de análisis, reflexión y formación en cultura política. Surge de la urgencia de visibilizar una transformación en la forma en que opera el poder: ya no centrado exclusivamente en el Estado, sino disperso en el campo de los valores, las costumbres y las prácticas culturales cotidianas. Es allí —en la cultura— donde hoy se libran las disputas más determinantes, moldeadas por las lógicas del capitalismo global y los imaginarios que el norte global exporta e impone como universales.
+          </p>
+          <p>
+            Los sectores populares latinoamericanos cargaron históricamente una conciencia forjada en valores y sentidos propios, donde la producción y el consumo de cultura jugaban un papel central en la reproducción de identidades colectivas y en el reconocimiento de lo popular como lugar político. Ese tejido se encuentra hoy bajo presión: los valores asociados al capitalismo del norte global se instalan —adaptados y naturalizados— en nuestras realidades, desplazando progresivamente aquellos sentidos que alguna vez orientaron la acción colectiva.
+          </p>
+          <p>
+            <strong>Objetivo general:</strong> Proporcionar herramientas teóricas para analizar la cultura política contemporánea como campo de disputa. A partir del concepto de hegemonía y sus desarrollos en los estudios culturales latinoamericanos, se recorren las dimensiones estéticas, espectaculares y digitales a través de las cuales el poder se reproduce —y puede ser contestado— en el presente. El objetivo es que el lector comprenda qué está en disputa en el terreno cultural y cómo se libra esa disputa hoy.
+          </p>
         </div>
 
-        <div class="tajo"></div>
-
-        <!-- ESTUDIOS -->
-        <div class="cv-section">
-          <h3>Estudios</h3>
-
-          <div class="cv-entry">
-            <span class="cv-year">20XX – 20XX</span>
-            <div class="cv-body">
-              <h4>Título del posgrado</h4>
-              <span class="cv-institution">Universidad / Institución · Ciudad</span>
-              <p>Descripción breve de la tesis o área de especialización, si es relevante.</p>
+        <article class="course-unit">
+          <div class="unit-head">
+            <span class="unit-label">Unidad I</span>
+            <h2 class="unit-title">Estética y valor estético</h2>
+          </div>
+          <div class="unit-meta">
+            <p><strong>Objetivo:</strong> Construir un marco conceptual sobre la experiencia estética como dimensión política. Comprender cómo lo sensible estructura quién ve, quién habla y quién es reducido al ruido, y cómo esa distribución puede ser subvertida.</p>
+            <div class="unit-content">
+              <h3>Ejes de contenido</h3>
+              <ul>
+                <li>¿Qué es la belleza? Aesthesis y valor estético (Dussel).</li>
+                <li>La experiencia sensible: apertura de la subjetividad a lo real (Dussel).</li>
+                <li>Del valor de uso al valor estético: la economía de lo sensible.</li>
+                <li>El reparto de lo sensible: política de la estética y estética de la política (Rancière).</li>
+                <li>El espectador emancipado: del lugar pasivo a la redistribución sensible (Rancière).</li>
+              </ul>
+            </div>
+            <div class="unit-bibliography">
+              <h3>Bibliografía</h3>
+              <p>Lecturas centrales: el corpus teórico que ofrece el proyecto como herramienta para pensar la relación entre estética, política y conflicto cultural.</p>
+              <ul class="bib-list">
+                <li>Dussel, E. (2018). <em>Estética de la liberación</em>. En <em>Filosofía de la cultura y la liberación</em>. México: UNAM. (Caps. 1–3)</li>
+                <li>Rancière, J. (2010). <em>El reparto de lo sensible: estética y política</em>. Santiago: LOM Ediciones.</li>
+                <li>Rancière, J. (2010). <em>El espectador emancipado</em>. Buenos Aires: Manantial.</li>
+              </ul>
             </div>
           </div>
+        </article>
 
-          <div class="cv-entry">
-            <span class="cv-year">20XX – 20XX</span>
-            <div class="cv-body">
-              <h4>Título de pregrado</h4>
-              <span class="cv-institution">Universidad / Institución · Ciudad</span>
-              <p>Descripción breve del trabajo de grado o énfasis, si es relevante.</p>
+        <article class="course-unit">
+          <div class="unit-head">
+            <span class="unit-label">Unidad II</span>
+            <h2 class="unit-title">Espectáculo, reproducción cultural e industria cultural</h2>
+          </div>
+          <div class="unit-meta">
+            <p><strong>Objetivo:</strong> Analizar cómo el capitalismo produce, administra y mercantiliza la sensibilidad colectiva a través del espectáculo y la industria cultural. Comprender la reproductibilidad técnica y la experiencia moderna.</p>
+            <div class="unit-content">
+              <h3>Ejes de contenido</h3>
+              <ul>
+                <li>La obra de arte en la era de la reproductibilidad técnica (Benjamin).</li>
+                <li>Sensorium, experiencia (Erfahrung) y modernidad (Benjamin).</li>
+                <li>La sociedad del espectáculo: imagen, separación y alienación sensible (Debord).</li>
+                <li>Espectacularización y sensacionalización de la vida cotidiana.</li>
+                <li>Industria cultural: masa, clase y lo popular.</li>
+                <li>Economía política del arte: del aura a la mercancía cultural.</li>
+              </ul>
+            </div>
+            <div class="unit-bibliography">
+              <h3>Bibliografía</h3>
+              <p>Textos clave para abordar la reproducción cultural moderna y la política de la imagen.</p>
+              <ul class="bib-list">
+                <li>Benjamin, W. (1989). <em>La obra de arte en la época de su reproductibilidad técnica</em>. En <em>Discursos interrumpidos I</em>. Buenos Aires: Taurus.</li>
+                <li>Benjamin, W. (2012). <em>El narrador: consideraciones sobre la obra de Nikolái Leskov</em>. Santiago: Metales Pesados.</li>
+                <li>Debord, G. (2008). <em>La sociedad del espectáculo</em>. Buenos Aires: La Marca Editora. (Caps. 1–4)</li>
+              </ul>
             </div>
           </div>
+        </article>
 
-        </div>
-
-        <!-- EXPERIENCIA DOCENTE / INVESTIGATIVA -->
-        <div class="cv-section">
-          <h3>Experiencia</h3>
-
-          <div class="cv-entry">
-            <span class="cv-year">20XX – Presente</span>
-            <div class="cv-body">
-              <h4>Cargo o rol</h4>
-              <span class="cv-institution">Institución / Organización · Ciudad</span>
-              <p>Descripción breve de las responsabilidades, cursos impartidos o proyectos en los que participas.</p>
+        <article class="course-unit">
+          <div class="unit-head">
+            <span class="unit-label">Unidad III</span>
+            <h2 class="unit-title">Medios digitales, sensorium y disputa de sentidos</h2>
+          </div>
+          <div class="unit-meta">
+            <p><strong>Objetivo:</strong> Comprender cómo los medios digitales reconfiguran la sensibilidad, la atención y la razón política. Analizar el vínculo entre el nuevo sensorium digital, el auge de las nuevas derechas latinoamericanas y los métodos posibles de disputa de sentidos desde posiciones populares e insurgentes.</p>
+            <div class="unit-content">
+              <h3>Ejes de contenido</h3>
+              <ul>
+                <li>De los medios a las mediaciones: sensorium y cultura popular (Martín-Barbero).</li>
+                <li>Sensorium digital: del libro al scroll, crisis de la experiencia sensible.</li>
+                <li>Estéticas beligerantes e identidad colectiva en entornos digitales (Castro, 2025).</li>
+                <li>El auge de las nuevas derechas y la disputa cultural en redes.</li>
+                <li>Métodos de disputa de sentidos hoy: comunicación popular e insurgencia cultural.</li>
+              </ul>
+            </div>
+            <div class="unit-bibliography">
+              <h3>Bibliografía</h3>
+              <p>Este corpus guía la reflexión sobre la transformación del sensorium en la era digital y su relación con la política de los sentidos.</p>
+              <ul class="bib-list">
+                <li>Martín-Barbero, J. (1987). <em>De los medios a las mediaciones: comunicación, cultura y hegemonía</em>. México: Gustavo Gili. (Caps. 1 y 6)</li>
+                <li>Martín-Barbero, J. (1998). <em>Jóvenes: des-orden cultural y palimpsestos de identidad</em>. En <em>Viviendo a toda: jóvenes, territorios culturales y nuevas sensibilidades</em>. Bogotá: Siglo del Hombre.</li>
+                <li>Castro, L. C. (2025). <em>Grafos y sonidos de guerra: estéticas beligerantes y cultura insurgente</em>. Tesis de Maestría en Comunicación. UNAM: Ciudad de México.</li>
+              </ul>
             </div>
           </div>
-
-          <div class="cv-entry">
-            <span class="cv-year">20XX – 20XX</span>
-            <div class="cv-body">
-              <h4>Cargo o rol anterior</h4>
-              <span class="cv-institution">Institución / Organización · Ciudad</span>
-              <p>Descripción breve.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- PUBLICACIONES ACADÉMICAS -->
-        <div class="cv-section">
-          <h3>Publicaciones académicas</h3>
-
-          <div class="cv-entry">
-            <span class="cv-year">20XX</span>
-            <div class="cv-body">
-              <h4>Título del artículo o capítulo</h4>
-              <span class="cv-institution">Revista / Editorial · ISSN o DOI</span>
-              <p>Descripción breve o cita completa en el formato de tu disciplina.</p>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <span class="cv-year">20XX</span>
-            <div class="cv-body">
-              <h4>Título del artículo o capítulo</h4>
-              <span class="cv-institution">Revista / Editorial · ISSN o DOI</span>
-              <p>Descripción breve o cita completa.</p>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <span class="cv-year">20XX</span>
-            <div class="cv-body">
-              <h4>Título del artículo o capítulo</h4>
-              <span class="cv-institution">Revista / Editorial · ISSN o DOI</span>
-              <p>Descripción breve o cita completa.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- PONENCIAS Y EVENTOS -->
-        <div class="cv-section">
-          <h3>Ponencias y eventos</h3>
-
-          <div class="cv-entry">
-            <span class="cv-year">20XX</span>
-            <div class="cv-body">
-              <h4>Título de la ponencia</h4>
-              <span class="cv-institution">Nombre del evento · Ciudad</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <span class="cv-year">20XX</span>
-            <div class="cv-body">
-              <h4>Título de la ponencia</h4>
-              <span class="cv-institution">Nombre del evento · Ciudad</span>
-            </div>
-          </div>
-
-        </div>
-
+        </article>
       </div>
     </section>
   </main>

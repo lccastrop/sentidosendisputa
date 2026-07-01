@@ -34,18 +34,41 @@
   // --- Formulario de contacto ---
   const form = document.getElementById('contact-form');
   if (form) {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
       btn.textContent = 'Enviando…';
       btn.disabled = true;
 
-      // Simular envío (reemplazar con lógica real)
-      setTimeout(() => {
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+        });
+
+        if (!response.ok) {
+          throw new Error('Error en el envío');
+        }
+
+        const data = await response.json();
+        if (data.success === false) {
+          throw new Error(data.message || 'Error en el envío');
+        }
+
         btn.textContent = 'Mensaje enviado';
         btn.style.background = '#3a6b3a';
         form.reset();
-      }, 1200);
+      } catch (error) {
+        btn.textContent = 'Error al enviar';
+        btn.style.background = '#971b1b';
+        console.error('Formulario Web3Forms:', error);
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+          btn.style.background = '';
+        }, 2500);
+      }
     });
   }
 

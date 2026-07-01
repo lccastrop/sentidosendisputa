@@ -80,11 +80,10 @@
           <div>
             <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
               <input type="hidden" name="access_key" value="a4b5ec14-117a-408f-9978-a62aded4a7b5" />
-              <input type="hidden" name="subject" value="Nuevo mensaje desde Sentidos en Disputa" />
-              <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
+              <input type="text" name="honeypot" style="display:none;" />
               <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+                <input type="text" id="nombre" name="name" placeholder="Tu nombre" required />
               </div>
 
               <div class="form-group">
@@ -94,18 +93,18 @@
 
               <div class="form-group">
                 <label for="asunto">Asunto</label>
-                <select id="asunto" name="asunto">
+                <select id="asunto" name="subject">
                   <option value="">Selecciona un asunto</option>
-                  <option value="colaboracion">Propuesta de colaboración</option>
-                  <option value="invitacion">Invitación</option>
-                  <option value="comentario">Comentario sobre el contenido</option>
-                  <option value="otro">Otro</option>
+                  <option value="Propuesta de colaboración">Propuesta de colaboración</option>
+                  <option value="Invitación">Invitación</option>
+                  <option value="Comentario sobre el contenido">Comentario sobre el contenido</option>
+                  <option value="Otro">Otro</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí…" required></textarea>
+                <textarea id="mensaje" name="message" placeholder="Escribe tu mensaje aquí…" required></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">

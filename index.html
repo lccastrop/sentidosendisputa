@@ -68,10 +68,9 @@
     <section style="border-top: none;">
       <div class="container">
         <span class="section-label">Qué es SED</span>
-        <h2 style="margin-bottom: 28px;">Una plataforma para<br />disputar el sentido común</h2>
         <div style="max-width: 72ch; display: flex; flex-direction: column; gap: 20px;">
           <p>
-            <strong>Sentidos en Disputa (SED)</strong> Nacemos de la necesidad de evidenciar la importancia del análisis
+            <strong>Sentidos en Disputa (SED)</strong> nace de la necesidad de evidenciar la importancia del análisis
             de la cultura política en el contexto actual, donde el poder, como ejercicio desde la centralidad del
             Estado, se desdibuja y adquiere una forma más dinámica. El campo de los valores y las costumbres dentro de
             la cultura está siendo afectado y determinado por sectores del norte global, el capitalismo y la
@@ -93,19 +92,17 @@
       <div class="container">
         <span class="section-label">Publicaciones</span>
         <h2>Últimas entradas</h2>
-        <div class="post-list">
-          <a href="pages/publicaciones.html" style="text-decoration:none; color:inherit;">
-            <div class="post-item">
-              <span class="post-date">Próximamente</span>
-              <div class="post-body">
-                <h3>Primera publicación: presentación del proyecto</h3>
-                <p>Las reflexiones e investigaciones de SED estarán disponibles aquí muy pronto.</p>
-                <div class="post-tags">
-                  <span class="tag">Presentación</span>
-                </div>
+        <div class="post-list" id="home-post-list">
+          <article class="post-item">
+            <span class="post-date">Próximamente</span>
+            <div class="post-body">
+              <h3>Primera publicación: presentación del proyecto</h3>
+              <p>Las reflexiones e investigaciones de SED estarán disponibles aquí muy pronto.</p>
+              <div class="post-tags">
+                <span class="tag">Presentación</span>
               </div>
             </div>
-          </a>
+          </article>
         </div>
         <div style="margin-top: 32px;">
           <a href="pages/publicaciones.html" class="btn btn-outline">Ver todas las publicaciones</a>
@@ -130,6 +127,90 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    (function() {
+      var container = document.getElementById('home-post-list');
+      if (!container) return;
+
+      function formatDate(str) {
+        if (!str) return '';
+        var d = new Date(str);
+        if (isNaN(d)) return '';
+        return d.toLocaleDateString('es-ES', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+      }
+
+      function stripHtml(html) {
+        var div = document.createElement('div');
+        div.innerHTML = html;
+        return (div.textContent || div.innerText || '').replace(/\s+/g, ' ').trim();
+      }
+
+      function excerpt(text, max) {
+        if (text.length <= max) return text;
+        return text.slice(0, max).replace(/\s\S*$/, '') + '…';
+      }
+
+      function escapeHtml(s) {
+        return s
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function renderItem(item) {
+        var titleEls = item.getElementsByTagName('title');
+        var title = titleEls.length ? titleEls[0].textContent.trim() : 'Sin título';
+        var linkEls = item.getElementsByTagName('link');
+        var link = linkEls.length ? linkEls[0].textContent.trim() : '';
+        if (!link) {
+          var guidEls = item.getElementsByTagName('guid');
+          link = guidEls.length ? guidEls[0].textContent.trim() : '#';
+        }
+        var dateEls = item.getElementsByTagName('pubDate');
+        var pubDate = dateEls.length ? dateEls[0].textContent.trim() : '';
+        var contentEls = item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded');
+        var descEls = item.getElementsByTagName('description');
+        var rawHtml = (contentEls.length && contentEls[0].textContent.trim())
+          ? contentEls[0].textContent.trim()
+          : (descEls.length ? descEls[0].textContent.trim() : '');
+        var desc = rawHtml ? excerpt(stripHtml(rawHtml), 220) : '';
+
+        container.innerHTML =
+          '<article class="post-item">' +
+          '<span class="post-date">' + escapeHtml(formatDate(pubDate)) + '</span>' +
+          '<div class="post-body">' +
+          '<h3><a href="' + escapeHtml(link) + '" target="_blank" rel="noopener">' +
+          escapeHtml(title) + '</a></h3>' +
+          (desc ? '<p>' + escapeHtml(desc) + '</p>' : '') +
+          '</div>' +
+          '</article>';
+      }
+
+      function fetchXml() {
+        return fetch('/api/feed')
+          .then(function(r) { if (!r.ok) throw new Error('proxy-' + r.status); return r.text(); })
+          .catch(function() {
+            return fetch('https://sentidosendisputa.substack.com/feed')
+              .then(function(r) { if (!r.ok) throw new Error('direct-' + r.status); return r.text(); });
+          });
+      }
+
+      fetchXml()
+        .then(function(xml) {
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(xml, 'application/xml');
+          if (doc.querySelector('parsererror')) throw new Error('XML inválido');
+          var items = Array.from(doc.getElementsByTagName('item'));
+          if (items.length) renderItem(items[0]);
+        })
+        .catch(function(err) {
+          console.error('[SED/index]', err);
+        });
+    })();
+  </script>
 </body>
 
 </html>

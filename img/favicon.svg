@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <path id="nf" d="M20,150 L20,52 C24,30 44,14 62,16 L88,30 L94,40 L80,50 L90,64 L120,76 L94,84 L104,94 L88,100 L104,112 L72,124 L56,144 Z"/>
+  </defs>
+  <use href="#nf" fill="#1A1714" />
+  <use href="#nf" fill="#B5151F" transform="translate(200,0) scale(-1,1)" />
+  <rect x="0" y="78" width="200" height="6" fill="#EFE7D8" />
+  <rect x="0" y="118" width="200" height="6" fill="#EFE7D8" />
+</svg>
